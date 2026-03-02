@@ -24,14 +24,14 @@
         button { background-color: var(--secondary); color: var(--primary); border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         button:hover { transform: translateY(-2px); filter: brightness(1.05); }
         
-        .rules-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 700px; font-size: 16px; line-height: 1.6; border-left: 5px solid var(--primary); }
+        .rules-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 750px; font-size: 15px; line-height: 1.6; border-left: 5px solid var(--primary); }
         .rules-box b { color: var(--primary); }
 
         .game-header { width: 100%; display: flex; flex-direction: column; align-items: center; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; position: sticky; top: 10px; z-index: 100; gap: 10px; }
         .header-top { width: 100%; display: flex; justify-content: space-between; align-items: center; }
         
-        #main-instruction { font-size: 18px; font-weight: bold; color: var(--primary); text-align: center; padding: 5px; border-radius: 5px; transition: all 0.3s ease; }
-        .step-2-active { background-color: #e8f5e9; color: var(--success) !important; transform: scale(1.05); }
+        #main-instruction { font-size: 18px; font-weight: bold; color: var(--primary); text-align: center; padding: 8px; border-radius: 8px; transition: all 0.3s ease; width: 100%; }
+        .step-2-active { background-color: #e8f5e9; color: var(--success) !important; transform: scale(1.02); border: 1px dashed var(--success); }
 
         .timer { font-size: 22px; font-weight: bold; color: #d93025; display: flex; align-items: center; gap: 8px; }
         
@@ -45,24 +45,25 @@
         .card:hover { background: #f0fdf4; }
         .card.selected { background: var(--secondary); border-color: #d4b800; transform: scale(1.02); box-shadow: 0 0 10px rgba(255, 221, 0, 0.5); }
         
-        /* Списки всередині карток */
         .card ul { margin: 5px 0 0 15px; padding: 0; }
         .card li { margin-bottom: 3px; }
 
+        /* Стиль карток у підрозділах */
         .service-slot .card { border-style: solid; border-color: #cbd5e0; margin-bottom: 5px; font-size: 11px; padding: 8px; }
         .service-slot .card:hover { border-color: var(--danger); background: #fff5f5; }
-        .service-slot .card:hover::after { content: " ↩ (2 кліки)"; font-size: 9px; color: var(--danger); font-weight: bold; position: absolute; right: 5px; top: 2px; }
+        .service-slot .card:hover::after { content: " ↩ двічі для повернення"; font-size: 9px; color: var(--danger); font-weight: bold; position: absolute; right: 5px; top: 2px; }
 
-        .services-zone { flex: 1.5; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        /* Дві колонки для підрозділів */
+        .services-zone { flex: 1.6; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         
-        .service-slot { background: white; border: 2px dashed #ccc; border-radius: 12px; padding: 10px; min-height: 100px; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
+        .service-slot { background: white; border: 2px dashed #ccc; border-radius: 12px; padding: 10px; min-height: 110px; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
         .service-slot:hover { border-color: var(--primary); background: #f9fbfb; }
-        .service-title { font-weight: bold; font-size: 12px; color: white; background: var(--primary); padding: 8px 4px; border-radius: 6px; text-align: center; margin-bottom: 10px; min-height: 40px; display: flex; align-items: center; justify-content: center; }
+        .service-title { font-weight: bold; font-size: 12px; color: white; background: var(--primary); padding: 8px 4px; border-radius: 6px; text-align: center; margin-bottom: 10px; min-height: 45px; display: flex; align-items: center; justify-content: center; line-height: 1.2; }
 
         @media (max-width: 600px) {
-            .services-zone { gap: 6px; }
+            .services-zone { gap: 8px; }
             .service-title { font-size: 10px; min-height: 35px; }
-            #main-instruction { font-size: 15px; }
+            #main-instruction { font-size: 14px; }
             .card { font-size: 12px; }
         }
 
@@ -75,15 +76,15 @@
 <body>
 
     <div id="screen-start" class="screen active">
-        <h1>Кредитний процес</h1>
+        <h1>Кредитний процес: Тренажер</h1>
         <div class="rules-box">
             <h3>📖 Інструкція та правила:</h3>
-            <p>Розподіляйте картки між <b>службами та підрозділами, які задіяні</b> у процесі, відповідно до їх завдань.</p>
+            <p>Розподіляйте картки між <b>службами та підрозділами, які задіяні</b> у процесі, відповідно до їх завдань та результатів.</p>
             <ul>
                 <li><b>Вибір:</b> Натисніть на картку, яку бажаєте розподілити.</li>
-                <li><b>Розміщення:</b> Після вибору картки натисніть на відповідний підрозділ у дві колонки.</li>
-                <li><b>Захист:</b> Повернути картку назад можна лише <b>двома кліками (double click)</b> по ній у блоці підрозділу.</li>
-                <li><b>Мета:</b> Правильно розподілити функції та результати за 5 хвилин.</li>
+                <li><b>Розміщення:</b> Після вибору картки натисніть на відповідний підрозділ. Для зручності підрозділи розбиті на <b>дві колонки</b>.</li>
+                <li><b>Захист від помилок:</b> Якщо ви помилилися, повернути картку назад у загальний пул можна лише <b>двома кліками (double click)</b> по ній у блоці підрозділу.</li>
+                <li><b>Мета:</b> Правильно розподілити всі 16 елементів за 5 хвилин.</li>
             </ul>
         </div>
         <button onclick="startGame()">Почати тестування</button>
@@ -114,38 +115,49 @@
     </div>
 
 <script>
-    // Оновлений список даних згідно вашого запиту
     const data = [
+        // Кредитний аналіз
         { id: 'ca_f', service: 'ca', type: 'Функції', html: "<ul><li>перевірка повноти та відповідності пакету документів;</li><li>аналіз фінансового стану та кредитоспроможності;</li><li>перевірки: БКІ, пов’язані особи, НПД, виключні переліки;</li><li>координація залучених служб;</li><li>консолідація висновків;</li><li>винесення питання на ККРБ.</li></ul>" },
         { id: 'ca_r', service: 'ca', type: 'Результат', html: "Підготовлений кредитний запит до прийняття рішення." },
         
+        // Ризики
         { id: 'risk_f', service: 'risk', type: 'Розглядає', html: "<ul><li>фінансову спроможність клієнта;</li><li>кредитні ризики;</li><li>відповідність умов кредиту ризиковому профілю.</li></ul>" },
-        { id: 'risk_r', service: 'risk', type: 'Результат', html: "<ul><li>висновок служби ризик-менеджменту щодо можливості здійснення кредитної операції;</li><li>зауваження або додаткові умови (за потреби).</li></ul>" },
+        { id: 'risk_r', service: 'risk', type: 'Результат', html: "<ul><li>висновок служби ризик-менеджменту щодо можливості операції;</li><li>зауваження або додаткові умови (за потреби).</li></ul>" },
         
+        // Юристи
         { id: 'legal_f', service: 'legal', type: 'Розглядає', html: "<ul><li>правовий статус сторін;</li><li>документи на предмет іпотеки / застави;</li><li>можливість укладення договорів.</li></ul>" },
         { id: 'legal_s', service: 'legal', type: 'Особливість', html: "Не залучається для кредитних запитів, що відповідають додатку 1.1 до Стандарту." },
         { id: 'legal_r', service: 'legal', type: 'Результат', html: "<ul><li>висновок Юридичної служби;</li><li>погодження проєктів договорів.</li></ul>" },
         
+        // Застава
         { id: 'col_f', service: 'col', type: 'Розглядає', html: "<ul><li>предмет застави;</li><li>ринкову та ліквідаційну вартість;</li><li>достатність забезпечення.</li></ul>" },
-        { id: 'col_r', service: 'col', type: 'Результат', html: "<ul><li>висновок щодо вартості та прийнятності предмета застави;</li><li>звіт суб’єкта оціночної діяльності (за необхідності).</li></ul>" },
+        { id: 'col_r', service: 'col', type: 'Результат', html: "<ul><li>висновок щодо вартості та прийнятності предмета застави;</li><li>звіт суб’єкта оціночної діяльності.</li></ul>" },
         
+        // Комплаєнс
         { id: 'comp_f', service: 'comp', type: 'Розглядає', html: "<ul><li>політично значущих осіб (НПД);</li><li>пов’язаність з Банком;</li><li>відповідність регуляторним вимогам.</li></ul>" },
         { id: 'comp_r', service: 'comp', type: 'Результат', html: "<ul><li>Комплаєнс-висновок щодо можливості проведення операції;</li><li>застереження або обмеження.</li></ul>" },
         
+        // Безпека
         { id: 'sec_f', service: 'sec', type: 'Розглядає', html: "<ul><li>клієнта, поручителів, майнових поручителів;</li><li>ознаки шахрайства;</li><li>негативну інформацію.</li></ul>" },
         { id: 'sec_r', service: 'sec', type: 'Результат', html: "Висновок Служби безпеки щодо прийнятності клієнта." },
         
-        { id: 'secr_f', service: 'secr', type: 'Секретар', html: "За наявності позитивних висновків служб виносить питання на розгляд Кредитного комітету." }
+        // Секретар
+        { id: 'secr_f', service: 'secr', type: 'Функція', html: "За наявності позитивних висновків служб виносить питання на розгляд Кредитного комітету." },
+
+        // ККРБ
+        { id: 'kkrb_f', service: 'kkrb', type: 'Розглядає', html: "<ul><li>кредитний запит;</li><li>висновки всіх задіяних служб.</li></ul>" },
+        { id: 'kkrb_r', service: 'kkrb', type: 'Приймає рішення', html: "<ul><li>надати кредит;</li><li>надати з відкладальними умовами;</li><li>відмовити у наданні кредиту.</li></ul>" }
     ];
 
     const servicesList = [
         { id: 'ca', name: 'Кредитний аналіз (ЦА)' },
-        { id: 'risk', name: 'Служба ризик-менеджменту' },
+        { id: 'risk', name: 'Ризик-менеджмент' },
         { id: 'legal', name: 'Юридична служба' },
-        { id: 'col', name: 'Служба оцінки застави' },
-        { id: 'comp', name: 'Служба комплаєнс' },
+        { id: 'col', name: 'Оцінка застави' },
+        { id: 'comp', name: 'Комплаєнс' },
         { id: 'sec', name: 'Служба безпеки' },
-        { id: 'secr', name: 'Секретар' }
+        { id: 'secr', name: 'Секретар' },
+        { id: 'kkrb', name: 'ККРБ (Комітет)' }
     ];
 
     let timerInterval, timeLeft = 300, selectedItemId = null, userAnswers = {};
@@ -264,7 +276,7 @@
         const scoreEl = document.getElementById('result-score');
         scoreEl.innerText = `${percent}%`;
         scoreEl.className = 'score ' + (percent >= 80 ? 'pass' : 'fail');
-        document.getElementById('result-message').innerHTML = percent >= 80 ? "Чудово! Ви добре знаєте ролі служб." : "Спробуйте ще раз, щоб закріпити знання.";
+        document.getElementById('result-message').innerHTML = percent >= 80 ? "<b>Вітаємо!</b> Ви успішно засвоїли кредитний процес." : "<b>Спробуйте ще раз!</b> Важливо знати зони відповідальності кожного підрозділу.";
         document.getElementById('retry-btn-container').innerHTML = `<button onclick="${percent >= 80 ? "switchScreen('screen-start')" : "startGame()"}">${percent >= 80 ? 'На головну' : 'Повторити'}</button>`;
         switchScreen('screen-result');
     }
